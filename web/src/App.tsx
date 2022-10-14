@@ -59,47 +59,48 @@ function App() {
           <Dialog.Content className="fixed bg-[#2a2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25">
             <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
             
-            <form className="mt-8">
+            <form className="mt-8 flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <label htmlFor="game" className="font-semibold">Qual o game?</label>
-                <Input id="game" placeholder="tste"/>
+                <Input id="game" placeholder="Selecione o jogo que deseja"/>
+                
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name">Seu nome(ou nickname)</label>
+                <Input id="name" placeholder="Como te chamam dentro do game?" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
+                  <Input id="yearPlaying" type="number" placeholder="Tudo bem ser um ZERO" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="discord">Qual seu Discord?</label>
+                  <Input id="discord" type="text" placeholder="Usuario#0000" />
+                </div>  
+              </div>
+
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="weekDays">Quando costuma jogar?</label>
+                </div>
+
+                <div className="flex flex-col gap-2 flex-1">
+                  <label htmlFor="hourStart">Qual horário do dia?</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Input id="hourStart" type="time" placeholder="De" />
+                    <Input id="hourEnd" type="time" placeholder="Até"/>
+                  </div>
+                </div>
+
                 
               </div>
 
               <div>
-                <label htmlFor="name">Seu nome(ou nickname)</label>
-                <input id="name" placeholder="Como te chamam dentro do game?" />
-              </div>
-
-              <div>
-                <div>
-                  <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
-                  <input id="yearPlaying" type="number" placeholder="Tudo bem ser um ZERO" />
-                </div>
-
-                <div>
-                  <label htmlFor="discord">Qual seu Discord?</label>
-                  <input id="discord" type="text" placeholder="Usuario#0000" />
-                </div>  
-              </div>
-
-              <div>
-                <div>
-                  <label htmlFor="weekDays">Quando costuma jogar?</label>
-                </div>
-
-                <div>
-                  <label htmlFor="hourStart">Qual horário do dia?</label>
-                </div>
-
-                <div>
-                  <input id="hourStart" type="time" placeholder="De" />
-                  <input id="hourEnd" type="time" placeholder="Até"/>
-                </div>
-              </div>
-
-              <div>
-                <input type="checkbox" />
+                <Input type="checkbox" />
                 Costumo me conectar ao chat de voz
               </div>
 
