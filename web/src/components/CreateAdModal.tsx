@@ -24,15 +24,35 @@ export function CreateAdModal() {
       })
     }, []);
 
-    function handleCreateAd(event: FormEvent) {
+    async function handleCreateAd(event: FormEvent) {
       event.preventDefault();
 
       const formData = new FormData(event.target as HTMLFormElement)
 
       const data = Object.fromEntries(formData)
 
-      console.log(data)
-      console.log(useVoiceChannel)
+      if (!data.name) {
+        return;
+      }
+
+      try {
+        await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
+          name: data.name,
+          yearsPlaying: Number(data.yearsPlaying),
+          discord: data.discord,
+          weekDays: weekDays.map(Number),
+          hourStart: data.hourStart,
+          hourEnd: data.hourEnd,
+          userVoiceChanel: useVoiceChannel
+        })
+
+        alert("Anúncio criado com sucesso!");
+
+      } catch(err) {
+        console.log(err)
+        alert(err)
+      }
+      
     }
 
   
@@ -73,7 +93,7 @@ export function CreateAdModal() {
           <div className="grid grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
-              <Input name="yearPlaying" id="yearPlaying" type="number" placeholder="Tudo bem ser um ZERO" />
+              <Input name="yearsPlaying" id="yearsPlaying" type="number" placeholder="Tudo bem ser um ZERO" />
             </div>
 
             <div className="flex flex-col gap-2">
